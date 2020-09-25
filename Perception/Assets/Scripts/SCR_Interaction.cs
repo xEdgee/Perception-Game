@@ -101,14 +101,14 @@ public class SCR_Interaction : MonoBehaviour
             //
             if (gameObject.transform.position.y < startPoint.y)
             {
-                float newScale = startPoint.y / this.gameObject.transform.position.y / 10;
+                float newScale = startPoint.y / gameObject.transform.position.y / 10;
                 gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
                 gameObject.GetComponent<Rigidbody>().mass -= newScale;
                 newScale = 0;
             }
             else
             {
-                float newScale = this.gameObject.transform.position.y / startPoint.y / 10;
+                float newScale = gameObject.transform.position.y / startPoint.y / 10;
                 gameObject.transform.localScale += new Vector3(newScale, newScale, newScale);
                 gameObject.GetComponent<Rigidbody>().mass += newScale;
                 newScale = 0;
