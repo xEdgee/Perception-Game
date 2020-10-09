@@ -66,6 +66,7 @@ public class SCR_Interaction : MonoBehaviour
     {
         //
         distanceCheck();
+
         if (distFromPlayer < 5.0f)
         {
 
