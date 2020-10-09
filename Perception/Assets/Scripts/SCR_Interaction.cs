@@ -8,7 +8,6 @@ public class SCR_Interaction : MonoBehaviour
 
     // Declearing the varibles for Pick Up Mechanic.
     [SerializeField] private GameObject Player;
-    private Vector3 myScreenPos;
     private Vector3 startPoint;
     private bool movement;
 
@@ -43,8 +42,7 @@ public class SCR_Interaction : MonoBehaviour
             //
                 distanceCheck();
 
-                myScreenPos = Camera.main.WorldToScreenPoint(transform.position);
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, myScreenPos.z));
+                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 2.5f));
 
                 if (GetComponent<Rigidbody>())
                 {
@@ -58,7 +56,7 @@ public class SCR_Interaction : MonoBehaviour
                 {
                     OnMouseUp();
                     movement = false;
-            }
+                }
 
         }
 
@@ -132,17 +130,6 @@ public class SCR_Interaction : MonoBehaviour
             gameObject.transform.localScale = localScale;
         }
     }
-
-    //private IEnumerator distanceCheck()
-    //{
-    //    while (movement)
-    //    {
-    //        playerCurrentPos = Player.transform.position;
-    //        distFromPlayer = Vector3.Distance(transform.position, playerCurrentPos);
-
-    //        yield return new WaitForSeconds(0.01f); 
-    //    }
-    //}
 
     private void distanceCheck()
     {
