@@ -11,6 +11,7 @@ public class SCR_Interaction : MonoBehaviour
     private Vector3 startPoint;
     private bool movement;
 
+
     //Declearing the Starting Location, Rotation and Scale.
     private Vector3 position;
     private Quaternion rotation;
@@ -98,7 +99,7 @@ public class SCR_Interaction : MonoBehaviour
 
 
             //
-            if (gameObject.transform.position.y < startPoint.y)
+            if (gameObject.transform.position.y - 7.5f < startPoint.y)
             {
                 float newScale = startPoint.y / gameObject.transform.position.y / 10;
                 gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
