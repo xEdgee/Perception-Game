@@ -2589,6 +2589,10 @@ PrefabInstance:
       propertyPath: advanced.maxSlopeAngle
       value: 55
       objectReference: {fileID: 0}
+    - target: {fileID: 114051214696948948, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 136239539305442568, guid: 2e62f5703e5f8d2488a5e1bc8433be41, type: 3}
       propertyPath: m_Height
       value: 2
@@ -6445,7 +6449,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 439203306}
-  m_RootOrder: 36
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &395674646
 Light:
@@ -7450,6 +7454,7 @@ Transform:
   - {fileID: 829086725}
   - {fileID: 1195566504}
   - {fileID: 848865069}
+  - {fileID: 395674645}
   - {fileID: 689855489}
   - {fileID: 1031941824}
   - {fileID: 1967115577}
@@ -7480,7 +7485,6 @@ Transform:
   - {fileID: 731754401}
   - {fileID: 1699315241}
   - {fileID: 395311800}
-  - {fileID: 395674645}
   - {fileID: 1454949435}
   - {fileID: 256550473}
   - {fileID: 1848697175}
@@ -8054,12 +8058,12 @@ GameObject:
   - component: {fileID: 486679195}
   - component: {fileID: 486679194}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Power (Size Down)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &486679193
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9401,7 +9405,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-67210
+  m_Name: pb_Mesh17700
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21140,7 +21144,7 @@ RectTransform:
   - {fileID: 2049405525}
   - {fileID: 486679193}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -27801,7 +27805,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1729229930 stripped
 Transform:
@@ -36801,7 +36805,7 @@ GameObject:
   - component: {fileID: 2049405527}
   - component: {fileID: 2049405526}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Power (Size Up)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
