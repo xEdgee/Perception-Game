@@ -68,10 +68,6 @@ using System.Collections.Generic;
 
 public class FirstPersonAIO : MonoBehaviour {
 
-    //BE
-    #region UI Variables
-    
-    #endregion
 
     #region Variables
 
