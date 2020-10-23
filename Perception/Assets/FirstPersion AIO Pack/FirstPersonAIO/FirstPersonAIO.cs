@@ -64,20 +64,12 @@ using System.Collections.Generic;
     using System.Net;
 #endif
 
-[RequireComponent(typeof(CapsuleCollider)), RequireComponent(typeof(Rigidbody)), AddComponentMenu("First Person AIO")]
+[RequireComponent(typeof(CapsuleCollider)),RequireComponent(typeof(Rigidbody)),AddComponentMenu("First Person AIO")]
 
 public class FirstPersonAIO : MonoBehaviour {
 
 
-
     #region Variables
-
-    //BE
-    #region UI Variables
-    [SerializeField] bool b_powerUp;
-    [SerializeField] GameObject ui_powerUp;
-    [SerializeField] GameObject ui_powerDown;
-    #endregion
 
     #region Input Settings
     public bool controllerPauseState = false;
@@ -111,7 +103,6 @@ public class FirstPersonAIO : MonoBehaviour {
     private Vector3 followAngles;
     private Vector3 followVelocity;
     private Vector3 originalRotation;
-
     #endregion
 
     #region Movement Settings
@@ -277,14 +268,6 @@ public class FirstPersonAIO : MonoBehaviour {
 
         #endregion
 
-        #region Initialize Variables - Awake
-        b_powerUp = false;
-        ui_powerUp = GameObject.Find("Power (Size Up)");
-        ui_powerDown = GameObject.Find("Power (Size Down)");
-        PowerSwitch();
-        #endregion
-
-
     }
 
     private void Start(){
@@ -353,19 +336,9 @@ public class FirstPersonAIO : MonoBehaviour {
 
     private void Update(){
 
-        #region Power Switch - Update
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            PowerSwitch();
-        }
-
-        #endregion
-
-
         #region Look Settings - Update
 
-        if (enableCameraMovement && !controllerPauseState){
+            if(enableCameraMovement && !controllerPauseState){
             float mouseYInput = 0;
             float mouseXInput = 0;
             float camFOV = playerCamera.fieldOfView;
@@ -834,22 +807,6 @@ public class FirstPersonAIO : MonoBehaviour {
 
     }
 
-    private void PowerSwitch()
-    {
-        b_powerUp = !b_powerUp;
-
-        if (b_powerUp)
-        {
-            ui_powerUp.SetActive(true);
-            ui_powerDown.SetActive(false);
-        }
-        else
-        {
-            ui_powerUp.SetActive(false);
-            ui_powerDown.SetActive(true);
-        }
-    }
-
 
 }
 
@@ -869,10 +826,6 @@ public class FirstPersonAIO : MonoBehaviour {
         static bool showControllerPauesSnip = false; */
 
         SerializedProperty staticFS;
-
-        SerializedProperty sp_ui_powerUp;
-        SerializedProperty sp_ui_powerDown;
-
 
         static bool showWoodFS = false;
         SerializedProperty woodFS;
@@ -948,10 +901,7 @@ public class FirstPersonAIO : MonoBehaviour {
             customMat = SerT.FindProperty("dynamicFootstep.customMat");
             customPhysMat = SerT.FindProperty("dynamicFootstep.customPhysMat");
 
-            
-
         }   
-
         public override void OnInspectorGUI(){
             if(t.transform.localScale!=Vector3.one){
                 t.transform.localScale = Vector3.one;
@@ -965,9 +915,6 @@ public class FirstPersonAIO : MonoBehaviour {
             EditorGUILayout.Space();
 
             if(t.controllerPauseState){GUILayout.Label("<b><color=#B40404>Controller Paused</color></b>",new GUIStyle(GUI.skin.label){alignment = TextAnchor.MiddleCenter, richText = true, fontSize = 16});}
-        
-            
-
 
         #region Camera Setup
             EditorGUILayout.LabelField("",GUI.skin.horizontalSlider);
