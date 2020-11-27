@@ -131,6 +131,14 @@ public class SCR_Interaction : MonoBehaviour
             gameObject.transform.rotation = rotation;
             gameObject.transform.localScale = localScale;
         }
+
+        //Trigger check to see if object has hit the holopanel reset it's Position, Rotation and Scale in world.
+        if (other.gameObject.tag == "Holo")
+        {
+            gameObject.transform.position = position;
+            gameObject.transform.rotation = rotation;
+            gameObject.transform.localScale = localScale;
+        }
     }
 
     private void distanceCheck()
