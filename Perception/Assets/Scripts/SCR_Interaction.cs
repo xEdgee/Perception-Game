@@ -21,6 +21,9 @@ public class SCR_Interaction : MonoBehaviour
     private Vector3 playerCurrentPos;
     private Vector3 objectCurrentPos;
 
+    private bool b_powerUp;
+
+
 
 
     // Start is called before the first frame update
@@ -67,6 +70,7 @@ public class SCR_Interaction : MonoBehaviour
     {
         //
         distanceCheck();
+        b_powerUp = Player.GetComponent<FirstPersonController>().accessorPowerBool();
 
         if (distFromPlayer < 5.0f)
         {
@@ -98,19 +102,18 @@ public class SCR_Interaction : MonoBehaviour
             transform.parent = null;
 
 
-            //
-            if (gameObject.transform.position.y - 7.5f < startPoint.y)
-            {
-                float newScale = startPoint.y / gameObject.transform.position.y / 10;
-                gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
-                gameObject.GetComponent<Rigidbody>().mass -= newScale;
-                newScale = 0;
-            }
-            else
+            if (b_powerUp)
             {
                 float newScale = gameObject.transform.position.y / startPoint.y / 10;
                 gameObject.transform.localScale += new Vector3(newScale, newScale, newScale);
                 gameObject.GetComponent<Rigidbody>().mass += newScale;
+                newScale = 0;
+            }
+            else
+            {
+                float newScale =  gameObject.transform.position.y / startPoint.y  / 10;
+                gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
+                gameObject.GetComponent<Rigidbody>().mass -= newScale;
                 newScale = 0;
             }
 

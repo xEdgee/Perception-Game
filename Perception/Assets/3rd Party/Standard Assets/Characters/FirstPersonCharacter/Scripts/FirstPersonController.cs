@@ -11,6 +11,18 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (AudioSource))]
     public class FirstPersonController : MonoBehaviour
     {
+        #region Variables 
+        //BE
+
+        //BE
+        #region UI Variables
+        [SerializeField] bool b_powerUp;
+        [SerializeField] GameObject ui_powerUp;
+        [SerializeField] GameObject ui_powerDown;
+        #endregion
+
+        #endregion
+
         [SerializeField] private bool m_IsWalking;
         [SerializeField] private float m_WalkSpeed;
         [SerializeField] private float m_RunSpeed;
@@ -56,12 +68,29 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+            #region Initialize Variables - Awake
+            b_powerUp = false;
+            ui_powerUp = GameObject.Find("Power (Size Up)");
+            ui_powerDown = GameObject.Find("Power (Size Down)");
+            PowerSwitch();
+            #endregion
         }
 
 
         // Update is called once per frame
         private void Update()
         {
+
+            #region Power Switch - Update
+
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                PowerSwitch();
+            }
+
+            #endregion
+
             RotateView();
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
@@ -84,6 +113,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
 
+        private void PowerSwitch()
+        {
+            b_powerUp = !b_powerUp;
+
+            if (b_powerUp)
+            {
+                ui_powerUp.SetActive(true);
+                ui_powerDown.SetActive(false);
+            }
+            else
+            {
+                ui_powerUp.SetActive(false);
+                ui_powerDown.SetActive(true);
+            }
+        }
 
         private void PlayLandingSound()
         {
@@ -160,6 +204,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             PlayFootStepAudio();
         }
 
+        public bool accessorPowerBool()
+        {
+            return b_powerUp;
+        }
 
         private void PlayFootStepAudio()
         {
@@ -257,4 +305,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             body.AddForceAtPosition(m_CharacterController.velocity*0.1f, hit.point, ForceMode.Impulse);
         }
     }
+
+
 }
