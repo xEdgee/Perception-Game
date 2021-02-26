@@ -82,6 +82,7 @@
      <Compile Include="Assets\3rd Party\Standard Assets\Vehicles\Car\Scripts\CarUserControl.cs" />
      <Compile Include="Assets\FirstPersion AIO Pack\FirstPersonAIO\FirstPersonAIO.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\Utility\ParticleSystemDestroyer.cs" />
+     <Compile Include="Assets\Scripts\SCR_Puzzle_Two.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\Utility\SimpleMouseRotator.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\Vehicles\Aircraft\Scripts\AeroplaneAudio.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\Utility\CurveControlledBob.cs" />
@@ -163,7 +164,6 @@
      <Compile Include="Assets\3rd Party\Standard Assets\Utility\FOVKick.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\2D\Scripts\PlatformerCharacter2D.cs" />
      <Compile Include="Assets\3rd Party\Standard Assets\Utility\AutoMobileShaderSwitch.cs" />
-     <Compile Include="Assets\Scripts\SCR_Puzzle_Two.cs" />
      <None Include="Assets\3rd Party\Standard Assets\Prototyping\Shaders\WorldCoordDiffuse.shader" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
      <None Include="Assets\3rd Party\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
