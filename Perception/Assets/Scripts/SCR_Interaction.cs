@@ -23,6 +23,9 @@ public class SCR_Interaction : MonoBehaviour
 
     private bool b_powerUp;
 
+    private float maxScale;
+    private float minScale;
+
 
 
 
@@ -36,6 +39,8 @@ public class SCR_Interaction : MonoBehaviour
         position = transform.position;
         rotation = transform.rotation;
         localScale = transform.localScale;
+        maxScale = transform.localScale.x + 2.5f;
+        minScale = transform.localScale.x - 2.5f;
     }
 
     // Update is called once per frame
@@ -44,23 +49,23 @@ public class SCR_Interaction : MonoBehaviour
         if (movement)
         {
             //
-                distanceCheck();
+            distanceCheck();
 
-                transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 2.5f));
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Input.mousePosition.z + 2.5f));
 
-                if (GetComponent<Rigidbody>())
-                {
-                    GetComponent<Rigidbody>().freezeRotation = true;
-                    GetComponent<Rigidbody>().isKinematic = true;
-                }
+            if (GetComponent<Rigidbody>())
+            {
+                GetComponent<Rigidbody>().freezeRotation = true;
+                GetComponent<Rigidbody>().isKinematic = true;
+            }
 
-                
-                
-                if (distFromPlayer > 5.0f)
-                {
-                    OnMouseUp();
-                    movement = false;
-                }
+
+
+            if (distFromPlayer > 5.0f)
+            {
+                OnMouseUp();
+                movement = false;
+            }
 
         }
 
@@ -82,10 +87,10 @@ public class SCR_Interaction : MonoBehaviour
                 GetComponent<Rigidbody>().useGravity = false;
             }
 
-            
+
             transform.parent = null;
             movement = true;
-            
+
         }
     }
 
@@ -105,14 +110,35 @@ public class SCR_Interaction : MonoBehaviour
             if (b_powerUp)
             {
                 float newScale = gameObject.transform.position.y / startPoint.y / 10;
-                gameObject.transform.localScale += new Vector3(newScale, newScale, newScale);
+
+                if (gameObject.transform.localScale.x > maxScale)
+                {
+                    gameObject.transform.localScale = new Vector3(maxScale, maxScale, maxScale);
+                    newScale = maxScale;
+
+                }
+                else
+                {
+                    gameObject.transform.localScale += new Vector3(newScale, newScale, newScale);
+                }
+
                 gameObject.GetComponent<Rigidbody>().mass += newScale;
                 newScale = 0;
             }
             else
             {
-                float newScale =  gameObject.transform.position.y / startPoint.y  / 10;
-                gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
+                float newScale = gameObject.transform.position.y / startPoint.y / 10;
+
+                if (gameObject.transform.position.x < minScale)
+                {
+                    gameObject.transform.localScale = new Vector3(minScale, minScale, minScale);
+                    newScale = minScale;
+                }
+                else
+                {
+                    gameObject.transform.localScale -= new Vector3(newScale, newScale, newScale);
+                }
+
                 gameObject.GetComponent<Rigidbody>().mass -= newScale;
                 newScale = 0;
             }

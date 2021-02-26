@@ -13,7 +13,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     {
         #region Variables 
         //BE
-
+        private bool b_isCrouching;
         //BE
         #region UI Variables
         [SerializeField] bool b_powerUp;
@@ -88,6 +88,25 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 PowerSwitch();
             }
+
+            #endregion
+
+
+            #region  Crouching - Update
+
+            if (Input.GetKey("c"))
+            {
+                b_isCrouching = true;
+
+                m_CharacterController.height = 0.9f;
+            }
+            else if (Input.GetKeyUp("c"))
+            {
+                b_isCrouching = false;
+
+                m_CharacterController.height = 1.8f;
+            }
+
 
             #endregion
 
